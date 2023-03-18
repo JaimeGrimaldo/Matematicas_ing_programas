@@ -6,3 +6,8 @@
 
 ## Programa 1
 En este programa, vemos una calculadora que resuelve mediante el metodo biseccion, en la carpeta ***intento 2*** esta la version funcional.
+
+
+
+### DEV
+Jaime Eduardo Grimaldo Moreno
