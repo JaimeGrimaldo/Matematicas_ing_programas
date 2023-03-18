@@ -11,3 +11,7 @@ En este programa, vemos una calculadora que resuelve mediante el metodo biseccio
 
 ### DEV
 Jaime Eduardo Grimaldo Moreno
+- Matricula: 191214
+- Universidad: Politecnica de Chiapas
+- Materia: Matematicas para Ingenieria
+- Programas de C3
