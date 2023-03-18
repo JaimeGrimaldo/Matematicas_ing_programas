@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de Bisección</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="estilo_biseccion.css">
+</head>
+<body>
+	<header>
+		<h1>Calculadora de Bisección</h1>
+	</header>
+	<main>
+		<form id="bisection-form">
+			<div class="input-wrapper">
+				<label for="function">Función f(x):</label>
+				<input type="text" id="function" name="function" placeholder="Ejemplo: x^2 - 3">
+			</div>
+			<div class="input-wrapper">
+				<label for="a">Límite inferior a:</label>
+				<input type="number" id="a" name="a" placeholder="Ejemplo: 1">
+			</div>
+			<div class="input-wrapper">
+				<label for="b">Límite superior b:</label>
+				<input type="number" id="b" name="b" placeholder="Ejemplo: 2">
+			</div>
+			<div class="input-wrapper">
+				<label for="tolerance">Tolerancia:</label>
+				<input type="text" id="tolerance" name="tolerance" placeholder="Ejemplo: 0.001">
+			</div>
+			<button type="submit">Calcular</button>
+		</form>
+		<div id="result"></div>
+        <br>
+        <div id="table"></div>
+
+	</main>
+	<script src="back_biseccion.js"></script>
+</body>
+</html>
