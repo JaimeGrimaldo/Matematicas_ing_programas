@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora de biseccion</title>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+  <body>
+    <div class="contenedorH1">
+      <h1>Calculadora de biseccion</h1>
+    </div>
+
+    <form>
+        <p>Ingrese la funcion f(x):</p>
+        <input type="text" id="funcion">
+    
+        <p>Ingrese el intervalo [a, b]:</p>
+        <label for="a">a:</label>
+        <input type="number" id="a">
+        <label for="b">b:</label>
+        <input type="number" id="b">
+    
+        <p>Ingrese la tolerancia:</p>
+        <input type="number" id="tolerance">
+    
+        <br><br>
+        <div id="botoncito">
+            <button onclick="calcular()">Calcular</button>
+        </div>
+
+    
+        <br><br>
+        <div id="result"></div>
+        <br>
+        <div id="table"></div>
+    
+        <script src="logica.js"></script>
+    </form>
+
+  </body>
+</html>
