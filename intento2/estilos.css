@@ -113,3 +113,14 @@ button:active{
 #botoncito {
     text-align: center;
 }
+
+.contenedorH1{
+    background-color: #4CAF50;
+    padding: 1px;
+    width: 100%;
+}
+
+h1{
+    text-transform: uppercase;
+    color: white;
+}
