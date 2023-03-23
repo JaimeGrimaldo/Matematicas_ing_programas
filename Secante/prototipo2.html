@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de la Secante</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <h1>Calculadora de la Secante</h1>
+
+    <form>
+        <div class="cont">
+            <label for="funcion">Función f(x):</label>
+            <input type="text" id="funcion" name="funcion"><br>
+    
+            <label for="x0">Valor inicial x0:</label>
+            <input type="number" id="x0" name="x0"><br>
+    
+            <label for="x1">Valor inicial x1:</label>
+            <input type="number" id="x1" name="x1"><br>
+    
+            <label for="tolerancia">Tolerancia:</label>
+            <input type="number" id="tolerancia" name="tolerancia"><br>
+    
+            <label for="maxiter">Número máximo de iteraciones:</label>
+            <input type="number" id="maxiter" name="maxiter"><br>
+    
+            <button type="button" onclick="calcularSecante()">Calcular</button>
+        </div>
+
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function f(x) {
+            var expr = document.getElementById("funcion").value;
+            var scope = { x: x };
+            return math.evaluate(expr, scope);
+        }
+
+        function calcularSecante() {
+            var x0 = parseFloat(document.getElementById("x0").value);
+            var x1 = parseFloat(document.getElementById("x1").value);
+            var tol = parseFloat(document.getElementById("tolerancia").value);
+            var maxIter = parseInt(document.getElementById("maxiter").value);
+
+            var x = [x0, x1];
+            var fx = [f(x0), f(x1)];
+            var iter = 0;
+            var err = tol + 1;
+            var tabla = "<tr><th>Iteración</th><th>x</th><th>f(x)</th><th>Error</th></tr>";
+
+            while (err > tol && iter < maxIter) {
+                iter++;
+                var x2 = x[1] - fx[1] * ((x[1] - x[0]) / (fx[1] - fx[0]));
+                var fx2 = f(x2);
+                err = Math.abs(x2 - x[1]);
+                x = [x[1], x2];
+                fx = [fx[1], fx2];
+                tabla += "<tr><td>" + iter + "</td><td>" + x2.toFixed(6) + "</td><td>" + fx2.toFixed(6) + "</td><td>" + err.toFixed(6) + "</td></tr>";
+            }
+
+            if (iter == maxIter) {
+                document.getElementById("resultado").innerHTML = "Se alcanzó el número máximo de iteraciones.";
+            } else {
+                var resultado = "El resultado es x = " + x[1].toFixed(6) + "<br><br>";
+                resultado += "<table>" + tabla + "</table>";
+                document.getElementById("resultado").innerHTML = resultado;
+            }
+        }
+    </script>
+</body>
+
+</html>

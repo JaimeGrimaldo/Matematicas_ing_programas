@@ -54,10 +54,9 @@ form input[type="submit"]:hover {
 
 /* Estilos para la tabla */
 table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    margin: auto auto;
+    border-radius: 5px;
+    background-color: white;
 }
 
 thead {
@@ -80,6 +79,7 @@ tr:hover {
 
 html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #eaeaea;
 }
 
 h1{
@@ -123,4 +123,12 @@ button:active{
 h1{
     text-transform: uppercase;
     color: white;
+}
+
+
+.contenedor {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px 300px 300px 300px;
+    border-radius: 10px;
 }
