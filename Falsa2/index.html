@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de la posición falsa</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script>
+        function falsaPosicion(f, a, b, tol, maxIter) {
+            var fa = f(a);
+            var fb = f(b);
+            var c = 0;
+            var fc = 0;
+            var i = 0;
+            var error = tol + 1;
+            var iter = 0;
+            var tabla = "<table><tr><th>i</th><th>a</th><th>b</th><th>c</th><th>f(c)</th><th>error</th></tr>";
+            while (error > tol && iter < maxIter) {
+                c = (a * fb - b * fa) / (fb - fa);
+                fc = f(c);
+                error = Math.abs(fc);
+                tabla += "<tr><td>" + i + "</td><td>" + a + "</td><td>" + b + "</td><td>" + c + "</td><td>" + fc + "</td><td>" + error + "</td></tr>";
+                if (fc * fb < 0) {
+                    a = c;
+                    fa = fc;
+                } else {
+                    b = c;
+                    fb = fc;
+                }
+                i++;
+                iter++;
+            }
+            tabla += "</table>";
+            return [c, tabla];
+        }
+
+        //return Math.pow(x,3) - x - 1;
+        //return Math.pow(x, 3) - 2 * x - 5;
+        //return Math.pow(x, 2) - 2 * x + 2;
+        //return Math.pow(6 * x, 3) - Math.pow(5 * x, 2) + 7 * x - 2;
+        function calcular() {
+            var f = function (x) {
+                return Math.pow(6 * x, 3) - Math.pow(5 * x, 2) + 7 * x - 2;
+            };
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            var tol = parseFloat(document.getElementById("tol").value);
+            var maxIter = parseInt(document.getElementById("maxIter").value);
+            var resultado = falsaPosicion(f, a, b, tol, maxIter);
+            document.getElementById("funcionProcesar").innerHTML = "La funcion a evaluar es: "+f;
+            document.getElementById("resultado").innerHTML = "La raíz aproximada de x es: " + resultado[0];
+            document.getElementById("tabla").innerHTML = resultado[1];
+        }
+
+        (function(){
+            document.getElementById("funcionProcesar").innerHTML = "La funcion a evaluar es: "+f;
+        }());
+    </script>
+</head>
+
+<body>
+    <h1>Calculadora de la posición falsa</h1>
+    <div id="funcionProcesar">Modifica la función en el codigo linea 42
+        <p>Por problemas de codigo y tiempo no pude implementar la entrada de funcion aca</p>
+    </div>
+    <br>
+    <form>
+        <div class="formulario">
+            <label for="a">a:</label>
+            <input type="number" id="a" name="a" value="2"><br><br>
+            <label for="b">b:</label>
+            <input type="number" id="b" name="b" value="3"><br><br>
+            <label for="tol">Tolerancia:</label>
+            <input type="number" id="tol" name="tol" value="0.0001"><br><br>
+            <label for="maxIter">Número máximo de iteraciones:</label>
+            <input type="number" id="maxIter" name="maxIter" value="10"><br><br>
+            <input type="button" value="Calcular" onclick="calcular()">
+        </div>
+
+    </form>
+    <div id="resultado"></div>
+    <div id="tabla"></div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculadora de la posición falsa</title>
+    <script>
+        function falsaPosicion(f, a, b, tol, maxIter) {
+            var fa = f(a);
+            var fb = f(b);
+            var c = 0;
+            var fc = 0;
+            var i = 0;
+            var error = tol + 1;
+            var iter = 0;
+            var tabla = "<table><tr><th>i</th><th>a</th><th>b</th><th>c</th><th>f(c)</th><th>error</th></tr>";
+            while (error > tol && iter < maxIter) {
+                c = (a * fb - b * fa) / (fb - fa);
+                fc = f(c);
+                error = Math.abs(fc);
+                tabla += "<tr><td>" + i + "</td><td>" + a + "</td><td>" + b + "</td><td>" + c + "</td><td>" + fc + "</td><td>" + error + "</td></tr>";
+                if (fc * fb < 0) {
+                    a = c;
+                    fa = fc;
+                } else {
+                    b = c;
+                    fb = fc;
+                }
+                i++;
+                iter++;
+            }
+            tabla += "</table>";
+            return [c, tabla];
+        }
+
+        function calcular() {
+            // var f = eval("function(x) { return " + document.getElementById("funcion").value + "; }");
+            var f = eval(document.getElementById("funcion").value);
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            var tol = parseFloat(document.getElementById("tol").value);
+            var maxIter = parseInt(document.getElementById("maxIter").value);
+            var resultado = falsaPosicion(f, a, b, tol, maxIter);
+            document.getElementById("resultado").innerHTML = "La raíz aproximada de x es: " + resultado[0];
+            document.getElementById("tabla").innerHTML = resultado[1];
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Calculadora de la posición falsa</h1>
+    <form>
+        <label for="funcion">Función:</label>
+        <input type="text" id="funcion" name="funcion" value="x^3 - 2*x - 5"><br><br>
+        <label for="a">a:</label>
+        <input type="number" id="a" name="a" value="2"><br><br>
+        <label for="b">b:</label>
+        <input type="number" id="b" name="b" value="3"><br><br>
+        <label for="tol">Tolerancia:</label>
+        <input type="number" id="tol" name="tol" value="0.0001"><br><br>
+        <label for="maxIter">Número máximo de iteraciones:</label>
+        <input type="number" id="maxIter" name="maxIter" value="10"><br><br>
+        <input type="button" value="Calcular" onclick="calcular()">
+    </form>
+    <div id="resultado"></div>
+    <div id="tabla"></div>
+</body>
+
+</html> -->

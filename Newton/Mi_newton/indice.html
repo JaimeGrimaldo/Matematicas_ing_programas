@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculadora Newton-Raphson</title>
+    <script src="C:\Users\Danker\Desktop\Programa - Matematicas para ING II\derivejs-master\index.js"></script>
+  </head>
+  <body>
+    <h1>Calculadora Newton-Raphson</h1>
+    <form>
+      <label for="funcion">Función:</label>
+      <input type="text" id="funcion"><br><br>
+      <label for="valor-inicial">Valor inicial:</label>
+      <input type="number" id="valor-inicial"><br><br>
+      <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    <h2>Resultados</h2>
+    <p id="resultado"></p>
+    <table id="tabla">
+      <tr>
+        <th>n</th>
+        <th>xn</th>
+        <th>f(xn)</th>
+        <th>f'(xn)</th>
+        <th>xn+1</th>
+        <th>error</th>
+      </tr>
+    </table>
+  </body>
+  <script src="logica.js"></script>
+</html>

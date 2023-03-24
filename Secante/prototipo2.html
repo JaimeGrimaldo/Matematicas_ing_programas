@@ -8,25 +8,29 @@
 </head>
 
 <body>
-    <h1>Calculadora de la Secante</h1>
+    <h1 class="titulo">Calculadora del metodo Secante</h1>
 
     <form>
         <div class="cont">
             <label for="funcion">Función f(x):</label>
             <input type="text" id="funcion" name="funcion"><br>
-    
+
             <label for="x0">Valor inicial x0:</label>
             <input type="number" id="x0" name="x0"><br>
-    
+
             <label for="x1">Valor inicial x1:</label>
             <input type="number" id="x1" name="x1"><br>
-    
+            <br>
+            <hr>
+            <p class="separador">Valores adicionales para el funcionamiento del programa.</p>
+            <br>
+
             <label for="tolerancia">Tolerancia:</label>
             <input type="number" id="tolerancia" name="tolerancia"><br>
-    
+
             <label for="maxiter">Número máximo de iteraciones:</label>
             <input type="number" id="maxiter" name="maxiter"><br>
-    
+
             <button type="button" onclick="calcularSecante()">Calcular</button>
         </div>
 
